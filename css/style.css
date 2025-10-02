@@ -10,35 +10,53 @@ body {
   background: #121212;
   color: #eee;
 }
-
+/* Navbar */
 .header {
+  margin: 15px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 10%;
-  background: #1a1a1a;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  background: #1b1b3b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2em;
+  box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.3);
+  position: relative;
+  z-index: 10;
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  background: linear-gradient(90deg, #00f, #9f49f0);
+  background: linear-gradient(
+    135deg,
+    #667eea 0%,
+    #764ba2 25%,
+    #f093fb 50%,
+    #f5576c 75%,
+    #4facfe 100%
+  );
+  background-size: 400% 400%;
   background-clip: text;
-  -webkit-background-clip: text;
+  animation: colorShift 10s ease infinite;
   color: transparent;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
 }
 
 .nav a {
   position: relative;
-  margin-left: 25px;
   text-decoration: none;
   color: #ccc;
   font-size: 1rem;
   transition: color 0.3s ease;
 }
+
 .nav a::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -5px;
   left: 0;
@@ -54,4 +72,62 @@ body {
 
 .nav a:hover::after {
   width: 100%;
+}
+
+.menu {
+  font-size: 24px;
+  cursor: pointer;
+  display: none;
+  color: #fff;
+}
+
+.sidebar {
+  z-index: 5000;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 1em;
+  width: 95vw;
+  max-width: 500px;
+  background-color: #1b1b3b;
+  text-align: center;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.sidebar.active {
+  max-height: 400px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.sidebar .link {
+  display: block;
+  padding: 12px 20px;
+  color: #f0e6d8;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: background 0.3s;
+}
+
+.sidebar .link:hover {
+  background: #282858;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+  .menu {
+    display: block;
+  }
+}
+@media (min-width: 768px) {
+  .sidebar {
+    display: none;
+  }
 }
