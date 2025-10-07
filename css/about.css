@@ -259,13 +259,13 @@
 /* Sponsors section */
 .sponsors-section {
   font-family: "Inter", "Segoe UI", Roboto, sans-serif;
-  background: linear-gradient(
-    135deg,
-    #667eea 0%,
-    #764ba2 25%,
-    #f093fb 50%,
-    #f5576c 75%,
-    #4facfe 100%
+   background: radial-gradient(
+    ellipse at top,
+    #1a1a2e 0%,      /* very dark blue */
+    #1f1f3a 25%,     /* slightly lighter */
+    #242446 50%,     /* medium dark blue */
+    #1b1b3b 75%,     /* darker bluish shade */
+    #0f0f23 100%     /* almost black */
   );
   background-size: 400% 400%;
   animation: colorShift 10s ease infinite;

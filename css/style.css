@@ -9,125 +9,171 @@ body {
   font-family: "Segoe UI", sans-serif;
   background: #121212;
   color: #eee;
+  box-sizing: border-box;
+  padding-top: 120px; 
 }
-/* Navbar */
+
+/*Bounce animation */
+@keyframes bounce {
+  0% {
+    transform: translate(-50%, -2px);
+  }
+  50% {
+    transform: translate(-50%, 0);
+  }
+  100% {
+    transform: translate(-50%, -2px);
+  }
+}
+
 .header {
-  margin: 15px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 10%;
-  background: #1b1b3b;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 2em;
-  box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.3);
-  position: relative;
-  z-index: 10;
+  padding: 16px 24px;
+  background: rgba(26, 26, 26, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  gap: 40px;
+
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 90%;
+  max-width: 1200px;
+  z-index: 1000; 
+  animation: bounce 1s infinite;
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: bold;
-  background: linear-gradient(
-    135deg,
-    #667eea 0%,
-    #764ba2 25%,
-    #f093fb 50%,
-    #f5576c 75%,
-    #4facfe 100%
-  );
-  background-size: 400% 400%;
+  background: linear-gradient(90deg, #00f, #9f49f0);
   background-clip: text;
-  animation: colorShift 10s ease infinite;
-  color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .nav {
   display: flex;
-  gap: 20px;
+  gap: 30px;
+  overflow-x: auto;
+  white-space: nowrap;
+  flex: 1;
+  justify-content: flex-end;
+  scrollbar-width: none;
 }
-
+.nav::-webkit-scrollbar {
+  display: none;
+}
 .nav a {
   position: relative;
   text-decoration: none;
   color: #ccc;
-  font-size: 1rem;
+  font-size: 1.1rem;
   transition: color 0.3s ease;
 }
-
-.nav a::after {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: #fff;
-  transition: width 0.3s ease;
-}
-
 .nav a:hover {
   color: #fff;
 }
 
-.nav a:hover::after {
-  width: 100%;
+.hamburger {
+  width: 30px;
+  height: 20px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.hamburger span {
+  display: block;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: 0.3s;
 }
 
-.menu {
-  font-size: 24px;
-  cursor: pointer;
-  display: none;
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  background: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 60px 20px;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.4);
+  z-index: 2000;
+}
+.sidebar.open {
+  transform: translateX(0);
+}
+.sidebar a {
+  display: block;
+  text-decoration: none;
+  color: #ccc;
+  margin: 20px 0;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+.sidebar a:hover {
   color: #fff;
 }
 
-.sidebar {
-  z-index: 5000;
+
+.close-btn {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 1em;
-  width: 95vw;
-  max-width: 500px;
-  background-color: #1b1b3b;
-  text-align: center;
-  overflow: hidden;
-  max-height: 0;
+  top: 20px;
+  right: 20px;
+  font-size: 1.8rem;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.close-btn:hover {
+  color: #fff;
+}
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
   opacity: 0;
-  visibility: hidden;
-  transition: all 0.4s ease;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1500; 
 }
-
-.sidebar.active {
-  max-height: 400px;
+.overlay.show {
   opacity: 1;
-  visibility: visible;
-}
-
-.sidebar .link {
-  display: block;
-  padding: 12px 20px;
-  color: #f0e6d8;
-  text-decoration: none;
-  font-size: 1.1rem;
-  transition: background 0.3s;
-}
-
-.sidebar .link:hover {
-  background: #282858;
+  pointer-events: all;
 }
 
 @media (max-width: 768px) {
   .nav {
     display: none;
   }
-  .menu {
-    display: block;
+  .logo{
+    margin-left: 15px;
   }
-}
-@media (min-width: 768px) {
-  .sidebar {
-    display: none;
+  .hamburger {
+    display: flex;
+    margin-right: 15px;
+  }
+  .header {
+    width: 94%;
   }
 }

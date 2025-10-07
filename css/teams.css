@@ -1,24 +1,16 @@
-/* Background */
-/* body {
+/* Background
+body {
   font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #fff;
 } */
 
 /* Section */
 .team {
+  background: radial-gradient(circle at 50% 50%, #1a1a2e, #0f0f1f);
+  color: #fff;
   text-align: center;
   padding: 80px 20px;
-  background: linear-gradient(
-    135deg,
-    #667eea 0%,
-    #764ba2 25%,
-    #f093fb 50%,
-    #f5576c 75%,
-    #4facfe 100%
-  );
 }
 
 .team h2 {
@@ -49,7 +41,7 @@
 
 /* Member Card */
 .team-member {
-  background: rgba(255, 255, 255, 0.318);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 20px 15px;
