@@ -1,13 +1,27 @@
-AOS.init({
-  duration: 800,
-  once: true,
-  offset: 50,
-  easing: "ease-out-cubic"
-});
-
 document.addEventListener("DOMContentLoaded", () => {
+  if (typeof AOS !== 'undefined' && AOS && typeof AOS.init === 'function') {
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 50,
+      easing: "ease-out-cubic"
+    });
+  }
+
   const hamburger = document.querySelector(".hamburger");
-  const overlay = document.querySelector(".overlay");
+
+  // Ensure overlay exists
+  let overlay = document.querySelector(".overlay");
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.className = 'overlay';
+    document.body.appendChild(overlay);
+  }
+
+  if (!hamburger) {
+    console.warn('No .hamburger element found ,sidebar toggle will not be available');
+    return;
+  }
 
   const sidebar = document.createElement("nav");
   sidebar.className = "sidebar";
@@ -29,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   hamburger.addEventListener("click", () => toggleSidebar(true));
-  closeBtn.addEventListener("click", () => toggleSidebar(false));
+  if (closeBtn) closeBtn.addEventListener("click", () => toggleSidebar(false));
   overlay.addEventListener("click", () => toggleSidebar(false));
 
   sidebar.querySelectorAll("a").forEach(link => {
