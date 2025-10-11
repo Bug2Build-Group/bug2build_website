@@ -27,6 +27,29 @@
         flex-direction: column;
         align-items: center;
         padding: 3rem 1rem;
+        cursor: none;
+      }
+
+      .cursor {
+        width: 30px;
+        height: 30px;
+        border: 2px solid #00ffaa;
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        transition: all 0.15s ease-out;
+        mix-blend-mode: difference;
+        z-index: 99999;
+        backdrop-filter: blur(2px);
+      }
+
+      canvas#trail {
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 9999;
       }
 
       h1 {
@@ -51,7 +74,6 @@
         max-width: 1300px;
       }
 
-    
       /* Card Container */
       .team-card {
         position: relative;
@@ -340,14 +362,14 @@
           font-size: 0.85rem;
         }
         .card-particles span {
-        width: 2vw;
-        height: 2vw;}
+          width: 2vw;
+          height: 2vw;
+        }
       }
 
       @media (max-width: 1024px) {
         .team-grid {
           grid-template-columns: repeat(2, 1fr);
-          
         }
         .member-name {
           font-size: 2.2rem;
@@ -365,11 +387,10 @@
         .social-links a i {
           font-size: 2rem;
         }
-        .corner-elements span{
+        .corner-elements span {
           width: 3em;
           height: 3em;
         }
-        
       }
 
       @media (max-width: 600px) {
@@ -401,245 +422,15 @@
     </style>
   </head>
   <body>
-    <!-- <div class="container-1"> -->
-      <center>
-        <h1>Tech Team Members</h1>
-        <hr />
-      </center>
-      <div class="team-grid">
-        <div class="team-card">
-          <div class="team-card-inner">
-            <div class="card-glare"></div>
-            <div class="cyber-lines"><span></span><span></span></div>
-            <div class="card-particles">
-              <span></span><span></span><span></span><span></span><span></span
-              ><span></span>
-            </div>
-            <div class="corner-elements">
-              <span></span><span></span><span></span><span></span>
-            </div>
-            <div class="avatar-wrapper">
-              <img
-                src="https://dummyimage.com/300"
-                alt="Olivia Rhye"
-                class="avatar"
-              />
-            </div>
-            <h3 class="member-name">User ka name</h3>
-            <p class="member-role">Role likho yaha</p>
-            <p class="member-bio">chhoti si bio likho yaha.</p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#"><i class="fab fa-dribbble"></i></a>
-            </div>
-          </div>
-        </div>
+    <canvas id="trail"></canvas>
+    <div class="cursor"></div>
 
-        <div class="team-card">
-          <div class="team-card-inner">
-            <div class="card-glare"></div>
-            <div class="cyber-lines"><span></span><span></span></div>
-            <div class="card-particles">
-              <span></span><span></span><span></span><span></span><span></span
-              ><span></span>
-            </div>
-            <div class="corner-elements">
-              <span></span><span></span><span></span><span></span>
-            </div>
-            <div class="avatar-wrapper">
-              <img
-                src="https://dummyimage.com/300"
-                alt="Olivia Rhye"
-                class="avatar"
-              />
-            </div>
-            <h3 class="member-name">User ka name</h3>
-            <p class="member-role">Role likho yaha</p>
-            <p class="member-bio">chhoti si bio likho yaha.</p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#"><i class="fab fa-dribbble"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="team-card">
-          <div class="team-card-inner">
-            <div class="card-glare"></div>
-            <div class="cyber-lines"><span></span><span></span></div>
-            <div class="card-particles">
-              <span></span><span></span><span></span><span></span><span></span
-              ><span></span>
-            </div>
-            <div class="corner-elements">
-              <span></span><span></span><span></span><span></span>
-            </div>
-            <div class="avatar-wrapper">
-              <img
-                src="https://dummyimage.com/300"
-                alt="Olivia Rhye"
-                class="avatar"
-              />
-            </div>
-            <h3 class="member-name">User ka name</h3>
-            <p class="member-role">Role likho yaha</p>
-            <p class="member-bio">chhoti si bio likho yaha.</p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#"><i class="fab fa-dribbble"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="team-card">
-          <div class="team-card-inner">
-            <div class="card-glare"></div>
-            <div class="cyber-lines"><span></span><span></span></div>
-            <div class="card-particles">
-              <span></span><span></span><span></span><span></span><span></span
-              ><span></span>
-            </div>
-            <div class="corner-elements">
-              <span></span><span></span><span></span><span></span>
-            </div>
-            <div class="avatar-wrapper">
-              <img
-                src="https://dummyimage.com/300"
-                alt="Olivia Rhye"
-                class="avatar"
-              />
-            </div>
-            <h3 class="member-name">User ka name</h3>
-            <p class="member-role">Role likho yaha</p>
-            <p class="member-bio">chhoti si bio likho yaha.</p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#"><i class="fab fa-dribbble"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="team-card">
-          <div class="team-card-inner">
-            <div class="card-glare"></div>
-            <div class="cyber-lines"><span></span><span></span></div>
-            <div class="card-particles">
-              <span></span><span></span><span></span><span></span><span></span
-              ><span></span>
-            </div>
-            <div class="corner-elements">
-              <span></span><span></span><span></span><span></span>
-            </div>
-            <div class="avatar-wrapper">
-              <img
-                src="https://dummyimage.com/300"
-                alt="Olivia Rhye"
-                class="avatar"
-              />
-            </div>
-            <h3 class="member-name">User ka name</h3>
-            <p class="member-role">Role likho yaha</p>
-            <p class="member-bio">chhoti si bio likho yaha.</p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#"><i class="fab fa-dribbble"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="team-card">
-          <div class="team-card-inner">
-            <div class="card-glare"></div>
-            <div class="cyber-lines"><span></span><span></span></div>
-            <div class="card-particles">
-              <span></span><span></span><span></span><span></span><span></span
-              ><span></span>
-            </div>
-            <div class="corner-elements">
-              <span></span><span></span><span></span><span></span>
-            </div>
-            <div class="avatar-wrapper">
-              <img
-                src="https://dummyimage.com/300"
-                alt="Olivia Rhye"
-                class="avatar"
-              />
-            </div>
-            <h3 class="member-name">User ka name</h3>
-            <p class="member-role">Role likho yaha</p>
-            <p class="member-bio">chhoti si bio likho yaha.</p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#"><i class="fab fa-dribbble"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="team-card">
-          <div class="team-card-inner">
-            <div class="card-glare"></div>
-            <div class="cyber-lines"><span></span><span></span></div>
-            <div class="card-particles">
-              <span></span><span></span><span></span><span></span><span></span
-              ><span></span>
-            </div>
-            <div class="corner-elements">
-              <span></span><span></span><span></span><span></span>
-            </div>
-            <div class="avatar-wrapper">
-              <img
-                src="https://dummyimage.com/300"
-                alt="Olivia Rhye"
-                class="avatar"
-              />
-            </div>
-            <h3 class="member-name">User ka name</h3>
-            <p class="member-role">Role likho yaha</p>
-            <p class="member-bio">chhoti si bio likho yaha.</p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#"><i class="fab fa-dribbble"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="team-card">
-          <div class="team-card-inner">
-            <div class="card-glare"></div>
-            <div class="cyber-lines"><span></span><span></span></div>
-            <div class="card-particles">
-              <span></span><span></span><span></span><span></span><span></span
-              ><span></span>
-            </div>
-            <div class="corner-elements">
-              <span></span><span></span><span></span><span></span>
-            </div>
-            <div class="avatar-wrapper">
-              <img
-                src="https://dummyimage.com/300"
-                alt="Olivia Rhye"
-                class="avatar"
-              />
-            </div>
-            <h3 class="member-name">User ka name</h3>
-            <p class="member-role">Role likho yaha</p>
-            <p class="member-bio">chhoti si bio likho yaha.</p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#"><i class="fab fa-dribbble"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <!-- <div class="team-card">
+    <center>
+      <h1>Tech Team Members</h1>
+      <hr />
+    </center>
+    <div class="team-grid">
+      <div class="team-card">
         <div class="team-card-inner">
           <div class="card-glare"></div>
           <div class="cyber-lines"><span></span><span></span></div>
@@ -653,15 +444,13 @@
           <div class="avatar-wrapper">
             <img
               src="https://dummyimage.com/300"
-              alt="Phoenix Baker"
+              alt="Olivia Rhye"
               class="avatar"
             />
           </div>
-          <h3 class="member-name">Phoenix Baker</h3>
-          <p class="member-role">Engineering Manager</p>
-          <p class="member-bio">
-            Lead engineering teams at Figma, Pitch, and Protocol Labs.
-          </p>
+          <h3 class="member-name">User ka name</h3>
+          <p class="member-role">Role likho yaha</p>
+          <p class="member-bio">chhoti si bio likho yaha.</p>
           <div class="social-links">
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -684,15 +473,13 @@
           <div class="avatar-wrapper">
             <img
               src="https://dummyimage.com/300"
-              alt="Lana Steiner"
+              alt="Olivia Rhye"
               class="avatar"
             />
           </div>
-          <h3 class="member-name">Lana Steiner</h3>
-          <p class="member-role">Product Manager</p>
-          <p class="member-bio">
-            Former PM for Linear, Lambda School, and On Deck.
-          </p>
+          <h3 class="member-name">User ka name</h3>
+          <p class="member-role">Role likho yaha</p>
+          <p class="member-bio">chhoti si bio likho yaha.</p>
           <div class="social-links">
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -715,15 +502,13 @@
           <div class="avatar-wrapper">
             <img
               src="https://dummyimage.com/300"
-              alt="Demi Wilkinson"
+              alt="Olivia Rhye"
               class="avatar"
             />
           </div>
-          <h3 class="member-name">Demi Wilkinson</h3>
-          <p class="member-role">Frontend Developer</p>
-          <p class="member-bio">
-            Former frontend dev for Linear, Coinbase, and Postscript.
-          </p>
+          <h3 class="member-name">User ka name</h3>
+          <p class="member-role">Role likho yaha</p>
+          <p class="member-bio">chhoti si bio likho yaha.</p>
           <div class="social-links">
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -746,15 +531,13 @@
           <div class="avatar-wrapper">
             <img
               src="https://dummyimage.com/300"
-              alt="Alex Carter"
+              alt="Olivia Rhye"
               class="avatar"
             />
           </div>
-          <h3 class="member-name">Alex Carter</h3>
-          <p class="member-role">Backend Developer</p>
-          <p class="member-bio">
-            Expert in Node.js, Django, and database architecture.
-          </p>
+          <h3 class="member-name">User ka name</h3>
+          <p class="member-role">Role likho yaha</p>
+          <p class="member-bio">chhoti si bio likho yaha.</p>
           <div class="social-links">
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -777,15 +560,13 @@
           <div class="avatar-wrapper">
             <img
               src="https://dummyimage.com/300"
-              alt="Maya Reed"
+              alt="Olivia Rhye"
               class="avatar"
             />
           </div>
-          <h3 class="member-name">Maya Reed</h3>
-          <p class="member-role">UX/UI Designer</p>
-          <p class="member-bio">
-            Designs immersive, futuristic UI experiences.
-          </p>
+          <h3 class="member-name">User ka name</h3>
+          <p class="member-role">Role likho yaha</p>
+          <p class="member-bio">chhoti si bio likho yaha.</p>
           <div class="social-links">
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -808,15 +589,13 @@
           <div class="avatar-wrapper">
             <img
               src="https://dummyimage.com/300"
-              alt="Noah Kim"
+              alt="Olivia Rhye"
               class="avatar"
             />
           </div>
-          <h3 class="member-name">Noah Kim</h3>
-          <p class="member-role">Data Scientist</p>
-          <p class="member-bio">
-            AI enthusiast with experience in ML & Big Data.
-          </p>
+          <h3 class="member-name">User ka name</h3>
+          <p class="member-role">Role likho yaha</p>
+          <p class="member-bio">chhoti si bio likho yaha.</p>
           <div class="social-links">
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -839,22 +618,48 @@
           <div class="avatar-wrapper">
             <img
               src="https://dummyimage.com/300"
-              alt="Ella Frost"
+              alt="Olivia Rhye"
               class="avatar"
             />
           </div>
-          <h3 class="member-name">Ella Frost</h3>
-          <p class="member-role">Marketing Head</p>
-          <p class="member-bio">
-            Expert in branding, digital marketing, and growth strategy.
-          </p>
+          <h3 class="member-name">User ka name</h3>
+          <p class="member-role">Role likho yaha</p>
+          <p class="member-bio">chhoti si bio likho yaha.</p>
           <div class="social-links">
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
             <a href="#"><i class="fab fa-dribbble"></i></a>
           </div>
         </div>
-      </div> -->
+      </div>
+
+      <div class="team-card">
+        <div class="team-card-inner">
+          <div class="card-glare"></div>
+          <div class="cyber-lines"><span></span><span></span></div>
+          <div class="card-particles">
+            <span></span><span></span><span></span><span></span><span></span
+            ><span></span>
+          </div>
+          <div class="corner-elements">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="avatar-wrapper">
+            <img
+              src="https://dummyimage.com/300"
+              alt="Olivia Rhye"
+              class="avatar"
+            />
+          </div>
+          <h3 class="member-name">User ka name</h3>
+          <p class="member-role">Role likho yaha</p>
+          <p class="member-bio">chhoti si bio likho yaha.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-dribbble"></i></a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -870,6 +675,95 @@
         easing: "cubic-bezier(.03,.98,.52,.99)",
         transition: true,
       });
+    </script>
+    <script>
+      const cursor = document.querySelector(".cursor");
+      const canvas = document.getElementById("trail");
+      const ctx = canvas.getContext("2d");
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      let mouse = { x: 0, y: 0 };
+      let particles = [];
+      let trailColor = { r: 0, g: 255, b: 170 }; // Aqua color
+      let isHoveringClickable = false;
+
+      // 🖱️ Mouse move listener
+      window.addEventListener("mousemove", (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+        cursor.style.left = mouse.x + "px";
+        cursor.style.top = mouse.y + "px";
+
+        // Trail particles
+        particles.push({
+          x: mouse.x,
+          y: mouse.y,
+          alpha: 1,
+          radius: 5 + Math.random() * 3,
+          color: `rgba(${trailColor.r}, ${trailColor.g}, ${trailColor.b}, `,
+        });
+      });
+
+      //  Detect hover on clickable elements
+      document.addEventListener("mouseover", (e) => {
+        const style = window.getComputedStyle(e.target);
+        if (style.cursor === "pointer") {
+          isHoveringClickable = true;
+          cursor.style.transform = "translate(-50%, -50%) scale(2.1)";
+          cursor.style.borderColor = "#ff0044";
+          trailColor = { r: 255, g: 0, b: 68 }; // Red trail
+        }
+      });
+
+      document.addEventListener("mouseout", (e) => {
+        const style = window.getComputedStyle(e.target);
+        if (style.cursor === "pointer") {
+          isHoveringClickable = false;
+          cursor.style.transform = "translate(-50%, -50%) scale(1)";
+          cursor.style.borderColor = "#00ffaa";
+          trailColor = { r: 0, g: 255, b: 170 }; // Aqua trail
+        }
+      });
+
+      // shrink/grow on mousedown/mouseup
+      document.addEventListener("mousedown", () => {
+        cursor.style.transform = isHoveringClickable
+          ? "translate(-50%, -50%) scale(1.5)"
+          : "translate(-50%, -50%) scale(0.8)";
+        cursor.style.backgroundColor = "rgba(255,255,255,0.2)";
+      });
+
+      document.addEventListener("mouseup", () => {
+        cursor.style.transform = isHoveringClickable
+          ? "translate(-50%, -50%) scale(1.8)"
+          : "translate(-50%, -50%) scale(1)";
+        cursor.style.backgroundColor = "transparent";
+      });
+
+      // Responsive resize
+      window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+
+      // Trail animation loop
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((p, i) => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.color + p.alpha + ")";
+          ctx.fill();
+
+          p.alpha -= 0.02;
+          p.radius *= 0.97;
+          if (p.alpha <= 0) particles.splice(i, 1);
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
     </script>
   </body>
 </html>
