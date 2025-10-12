@@ -5,6 +5,6 @@ Website for Bug2Build community created by its tech team which includes initial 
 ```
 Bhoumic Garg 
 Harshpreet Singh
-Aadarsh
+Aadarsh Chandra
 Sneha Bansal
 ```
