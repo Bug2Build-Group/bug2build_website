@@ -3,767 +3,705 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>team page - bug2build</title>
+    <title>Our Team - Bug2Build</title>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-
     <style>
       * {
-        box-sizing: border-box;
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
       }
 
       body {
-        background: #c8c8c8;
-        font-family: "Poppins", sans-serif;
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 3rem 1rem;
-        cursor: none;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+        background: #0d1117;
+        color: #e6edf3;
+        line-height: 1.6;
+        overflow-x: hidden;
       }
 
-      .cursor {
-        width: 30px;
-        height: 30px;
-        border: 2px solid #00ffaa;
-        border-radius: 50%;
-        position: fixed;
-        pointer-events: none;
-        transform: translate(-50%, -50%);
-        transition: all 0.15s ease-out;
-        mix-blend-mode: difference;
-        z-index: 99999;
-        backdrop-filter: blur(2px);
-      }
-
-      canvas#trail {
+      body::before {
+        content: "";
         position: fixed;
         top: 0;
         left: 0;
-        pointer-events: none;
-        z-index: 9999;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(ellipse at top, #1a2332 0%, #0d1117 50%);
+        z-index: -1;
       }
 
-      h1 {
-        font-size: 2.5rem;
+      .header {
         text-align: center;
-        margin-bottom: 0.5em;
-        letter-spacing: 1px;
+        padding: 100px 20px 70px;
       }
 
-      hr {
-        width: 80px;
-        border: 1px solid #00ffaa;
-        margin-bottom: 3rem;
+      .header p {
+        font-size: 1.2rem;
+        color: #8b949e;
+        font-weight: 400;
       }
 
-      /* Grid */
+      .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 24px 100px;
+      }
+
+      .team-section {
+        margin-bottom: 90px;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        color: #f0f6fc;
+        margin-bottom: 50px;
+        text-align: center;
+        font-weight: 600;
+        position: relative;
+        padding-bottom: 35px;
+      }
+
+      /* tube light effect below section title */
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 150px;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+        border-radius: 2px;
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5),
+          0 15px 40px rgba(118, 75, 162, 0.3),
+          0 20px 50px rgba(240, 147, 251, 0.2);
+      }
+
       .team-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
-        width: 100%;
-        max-width: 1300px;
+        gap: 28px;
       }
 
-      /* Card Container */
-      .team-card {
+
+      .member-card {
+        background: rgba(22, 27, 34, 0.6);
+        border: 2px solid #30363d;
+        border-radius: 12px;
+        padding: 32px 24px;
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.5s;
         position: relative;
-        width: 100%;
-        padding-top: 130%; /* Aspect ratio */
-        perspective: 800px;
+        backdrop-filter: blur(8px);
       }
 
-      /* Card Inner */
-      .team-card-inner {
+      /* animated gradient border on hover */
+      .member-card::before {
+        content: "";
         position: absolute;
-        inset: 0;
-        background: linear-gradient(45deg, #2a2929, #2c2222);
-        border-radius: 20px;
-        border: 2px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding: 2rem 1rem;
-        transition: transform 0.5s ease, box-shadow 0.3s ease;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 12px;
+        padding: 2px;
+        background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe, #667eea);
+        background-size: 300% 300%;
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.3s;
       }
 
-      .team-card-inner:hover {
-        transform: translateY(-10px) scale(1.03);
-        box-shadow: 0 0 20px rgba(0, 255, 170, 0.3);
+      .member-card:hover::before {
+        opacity: 1;
+        animation: borderMove 3s linear infinite;
       }
 
-      /* Avatar */
-      .avatar-wrapper {
-        width: 140px;
-        height: 140px;
-        margin-top: 0.5rem;
+      @keyframes borderMove {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 300% 50%;
+        }
       }
 
-      .avatar {
-        width: 100%;
-        height: 100%;
+      .member-card:hover {
+        transform: translateY(-8px);
+        animation: showShadow 1.5s forwards;
+      }
+
+      @keyframes showShadow {
+        0% {
+          box-shadow: none;
+        }
+        100% {
+          box-shadow: 0 12px 40px rgba(102, 126, 234, 0.2),
+                      0 0 0 1px rgba(118, 75, 162, 0.1);
+        }
+      }
+
+      .profile-photo {
+        width: 130px;
+        height: 130px;
         border-radius: 50%;
-        border: 3px solid #00ffaa;
-        box-shadow: 0 0 15px rgba(0, 255, 170, 0.4);
+        margin: 0 auto 22px;
+        border: 3px solid #30363d;
         object-fit: cover;
+        transition: border-color 0.3s, transform 0.3s;
       }
 
-      /* Text */
+      .member-card:hover .profile-photo {
+        border-color: #667eea;
+        transform: scale(1.05);
+      }
+
       .member-name {
-        font-size: 1.3rem;
-        font-weight: 700;
-        margin-top: 1.5rem;
-        text-align: center;
+        font-size: 1.25rem;
+        color: #f0f6fc;
+        font-weight: 600;
+        margin-bottom: 6px;
       }
 
-      .member-role {
-        font-size: 1rem;
-        font-weight: 500;
-        color: #00ffaa;
-        text-align: center;
-        margin: 0.3rem 0;
+      .member-position {
+        font-size: 0.95rem;
+        color: #7d8590;
+        margin-bottom: 20px;
       }
 
-      .member-bio {
-        font-size: 0.9rem;
-        text-align: center;
-        color: rgba(255, 255, 255, 0.75);
-        line-height: 1.4;
-        margin-top: 0.5rem;
-        padding: 0 0.5rem;
-      }
-
-      /* Social links */
       .social-links {
-        margin-top: auto;
         display: flex;
-        gap: 1rem;
-        opacity: 0;
-        transition: all 0.4s ease;
         justify-content: center;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        padding: 1rem;
-        border-radius: 2em;
-      }
-
-      .social-links a i {
-        font-size: 1.2rem;
-        color: #00ffaa;
-        transition: all 0.3s ease;
-      }
-
-      .social-links a i:hover {
-        color: #5c67ff;
-        /* box-shadow: 0 0 10px rgba(92, 103, 255, 0.4); */
-      }
-
-      .team-card-inner:hover .social-links {
-        opacity: 1;
-        transform: translateY(5px);
-      }
-
-      /* Glare & cyber lines */
-      .card-glare {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          125deg,
-          rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 0.05) 45%,
-          rgba(255, 255, 255, 0.1) 50%,
-          rgba(255, 255, 255, 0.05) 55%,
-          rgba(255, 255, 255, 0) 100%
-        );
+        gap: 12px;
         opacity: 0;
-        transition: opacity 0.3s;
+        transform: translateY(10px);
+        transition: opacity 0.3s, transform 0.3s;
       }
-      .team-card-inner:hover .card-glare {
+
+      .member-card:hover .social-links {
         opacity: 1;
+        transform: translateY(0);
       }
 
-      .cyber-lines span {
+      .social-links a {
+        width: 36px;
+        height: 36px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: #21262d;
+        border: 1px solid #30363d;
+        border-radius: 6px;
+        color: #8b949e;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+
+      .social-links a:hover {
+        background: #667eea;
+        border-color: #667eea;
+        color: #fff;
+        transform: translateY(-3px);
+      }
+
+      /* looping particles on hover */
+      .particle-effect {
         position: absolute;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(92, 103, 255, 0.2),
-          transparent
-        );
-      }
-      .cyber-lines span:nth-child(1) {
-        top: 20%;
-        left: 0;
-        width: 100%;
-        height: 0.1vw;
-        transform: scaleX(0);
-        transform-origin: left;
-        animation: lineGrow 3s linear infinite;
-      }
-      .cyber-lines span:nth-child(2) {
-        top: 50%;
-        left: 0;
-        width: 100%;
-        height: 0.1vw;
-        transform: scaleX(0);
-        transform-origin: right;
-        animation: lineGrow 3s linear infinite 1.5s;
-      }
-
-      @keyframes lineGrow {
-        0% {
-          transform: scaleX(0);
-          opacity: 0;
-        }
-        50% {
-          transform: scaleX(1);
-          opacity: 1;
-        }
-        100% {
-          transform: scaleX(0);
-          opacity: 0;
-        }
-      }
-
-      /* Particles */
-      .card-particles span {
-        position: absolute;
-        width: 0.5vw;
-        height: 0.5vw;
-        background: #00ffaa;
+        width: 6px;
+        height: 6px;
+        /* background: #667eea; */
         border-radius: 50%;
+        pointer-events: none;
         opacity: 0;
-        transition: opacity 0.3s;
       }
-      .team-card-inner:hover .card-particles span {
-        animation: particleFloat 2s infinite;
+
+      .member-card:hover .particle-effect {
+        animation: particleLoop 2.5s ease-in-out infinite;
       }
-      @keyframes particleFloat {
+
+      @keyframes particleLoop {
         0% {
-          transform: translate(0, 0);
           opacity: 0;
+          transform: translate(0, 0) scale(0);
         }
-        50% {
+        15% {
+          opacity: 1;
+        }
+        85% {
           opacity: 1;
         }
         100% {
-          transform: translate(
-            calc(var(--x, 0) * 1vw),
-            calc(var(--y, 0) * 1vw)
-          );
           opacity: 0;
+          transform: translate(var(--px), var(--py)) scale(1.5);
         }
       }
 
-      /* Assign particle positions */
-      .card-particles span:nth-child(1) {
-        --x: 1;
-        --y: -1;
-        top: 40%;
+      .particle-effect:nth-child(1) {
+        background-color: #4facfe;
+        top: 15%;
         left: 20%;
-      }
-      .card-particles span:nth-child(2) {
-        --x: -1;
-        --y: -1;
-        top: 60%;
-        right: 20%;
-      }
-      .card-particles span:nth-child(3) {
-        --x: 0.5;
-        --y: 1;
-        top: 20%;
-        left: 40%;
-      }
-      .card-particles span:nth-child(4) {
-        --x: -0.5;
-        --y: 1;
-        top: 80%;
-        right: 40%;
-      }
-      .card-particles span:nth-child(5) {
-        --x: 1;
-        --y: 0.5;
-        top: 30%;
-        left: 60%;
-      }
-      .card-particles span:nth-child(6) {
-        --x: -1;
-        --y: 0.5;
-        top: 70%;
-        right: 60%;
+        --px: -25px;
+        --py: -35px;
       }
 
-      /* Glowing corners */
-      .corner-elements span {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        border: 2px solid rgba(92, 103, 255, 0.3);
-        transition: all 0.3s;
+      .particle-effect:nth-child(2) {
+        background-color: #f093fb;
+        top: 25%;
+        right: 25%;
+        --px: 30px;
+        --py: -40px;
+        animation-delay: 0.8s;
       }
 
-      .corner-elements span:nth-child(1) {
-        top: 10px;
-        left: 10px;
-        border-right: 0;
-        border-bottom: 0;
-      }
-      .corner-elements span:nth-child(2) {
-        top: 10px;
-        right: 10px;
-        border-left: 0;
-        border-bottom: 0;
-      }
-      .corner-elements span:nth-child(3) {
-        bottom: 10px;
-        left: 10px;
-        border-right: 0;
-        border-top: 0;
-      }
-      .corner-elements span:nth-child(4) {
-        bottom: 10px;
-        right: 10px;
-        border-left: 0;
-        border-top: 0;
-      }
-
-      .team-card-inner:hover .corner-elements span {
-        border-color: rgba(92, 103, 255, 0.8);
-        box-shadow: 0 0 10px rgba(92, 103, 255, 0.6);
-      }
-
-      /* Responsive Adjustments */
-      @media (max-width: 900px) {
-        h1 {
-          font-size: 2rem;
-        }
-        .avatar-wrapper {
-          width: 150px;
-          height: 150px;
-        }
-        .member-name {
-          font-size: 1.2rem;
-        }
-        .member-role {
-          font-size: 0.9rem;
-        }
-        .member-bio {
-          font-size: 0.85rem;
-        }
-        .card-particles span {
-          width: 2vw;
-          height: 2vw;
-        }
+      .particle-effect:nth-child(3) {
+        background-color: #f5576c;
+        bottom: 30%;
+        left: 30%;
+        --px: -20px;
+        --py: 35px;
+        animation-delay: 1.6s;
       }
 
       @media (max-width: 1024px) {
         .team-grid {
           grid-template-columns: repeat(2, 1fr);
+          gap: 24px;
         }
-        .member-name {
-          font-size: 2.2rem;
+
+        .main-title {
+          font-size: 5vw;
         }
-        .avatar-wrapper {
-          width: 14em;
-          height: 14em;
-        }
-        .member-role {
-          font-size: 1.4rem;
-        }
-        .member-bio {
-          font-size: 1.5rem;
-        }
-        .social-links a i {
-          font-size: 2rem;
-        }
-        .corner-elements span {
-          width: 3em;
-          height: 3em;
+
+        .section-title {
+          font-size: 1.75rem;
         }
       }
 
-      @media (max-width: 600px) {
+      @media (max-width: 640px) {
         .team-grid {
           grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .header {
+          padding: 70px 20px 50px;
+        }
+
+        .main-title {
+          font-size: 8vw;
+        }
+
+        .header p {
+          font-size: 1rem;
+        }
+
+        .section-title {
+          font-size: 1.5rem;
+          margin-bottom: 35px;
+        }
+
+        .member-card {
+          padding: 28px 20px;
+        }
+
+        .profile-photo {
+          width: 110px;
+          height: 110px;
+        }
+
+        .member-name {
+          font-size: 1.1rem;
         }
       }
 
-      @media (max-width: 500px) {
-        h1 {
-          font-size: 1.8rem;
+      .main-title {
+        font-size: 4vw;
+        font-weight: 800;
+        margin-bottom: 20px;
+        background: linear-gradient(
+          135deg,
+          #667eea 0%,
+          #764ba2 25%,
+          #f093fb 50%,
+          #f5576c 75%,
+          #4facfe 100%
+        );
+        background-size: 300% 300%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: colorShift 10s ease infinite;
+        position: relative;
+      }
+
+      @keyframes colorShift {
+        0% {
+          background-position: 0% 50%;
         }
-        .team-card-inner {
-          padding: 1.5rem;
+        50% {
+          background-position: 100% 50%;
         }
-        .member-name {
-          font-size: 1.5rem;
+        100% {
+          background-position: 0% 50%;
         }
-        .member-role {
-          font-size: 1.1rem;
+      }
+
+      .title-underline {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        box-shadow: 0px 0px 8px rgba(102, 126, 234, 0.3);
+        border-radius: 2px;
+        animation: glow 2s ease-in-out infinite;
+      }
+
+      @keyframes glow {
+        0%,
+        100% {
+          opacity: 1;
+          transform: translateX(-50%) scaleX(1);
         }
-        .member-bio {
-          font-size: 1rem;
-        }
-        .social-links a i {
-          font-size: 1.5rem;
+        50% {
+          opacity: 0.7;
+          transform: translateX(-50%) scaleX(1.2);
         }
       }
     </style>
   </head>
   <body>
-    <canvas id="trail"></canvas>
-    <div class="cursor"></div>
+    <header class="header">
+      <h1 class="main-title">
+        Our Team
+        <div class="title-underline"></div>
+      </h1>
+      <p>Meet the people building Bug2Build</p>
+    </header>
 
-    <center>
-      <h1>Tech Team Members</h1>
-      <hr />
-    </center>
-    <div class="team-grid">
-      <div class="team-card">
-        <div class="team-card-inner">
-          <div class="card-glare"></div>
-          <div class="cyber-lines"><span></span><span></span></div>
-          <div class="card-particles">
-            <span></span><span></span><span></span><span></span><span></span
-            ><span></span>
-          </div>
-          <div class="corner-elements">
-            <span></span><span></span><span></span><span></span>
-          </div>
-          <div class="avatar-wrapper">
+    <div class="container">
+      <!-- Board Members -->
+      <section class="team-section">
+        <h2 class="section-title">Board Members</h2>
+        <div class="team-grid">
+          <div class="member-card">
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
             <img
               src="https://dummyimage.com/300"
-              alt="Olivia Rhye"
-              class="avatar"
+              alt="Member"
+              class="profile-photo"
             />
+            <h3 class="member-name">Member Name</h3>
+            <p class="member-position">Founder</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
           </div>
-          <h3 class="member-name">User ka name</h3>
-          <p class="member-role">Role likho yaha</p>
-          <p class="member-bio">chhoti si bio likho yaha.</p>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-dribbble"></i></a>
-          </div>
-        </div>
-      </div>
 
-      <div class="team-card">
-        <div class="team-card-inner">
-          <div class="card-glare"></div>
-          <div class="cyber-lines"><span></span><span></span></div>
-          <div class="card-particles">
-            <span></span><span></span><span></span><span></span><span></span
-            ><span></span>
-          </div>
-          <div class="corner-elements">
-            <span></span><span></span><span></span><span></span>
-          </div>
-          <div class="avatar-wrapper">
+          <div class="member-card">
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
             <img
               src="https://dummyimage.com/300"
-              alt="Olivia Rhye"
-              class="avatar"
+              alt="Member"
+              class="profile-photo"
             />
+            <h3 class="member-name">Member Name</h3>
+            <p class="member-position">Co-Founder</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
           </div>
-          <h3 class="member-name">User ka name</h3>
-          <p class="member-role">Role likho yaha</p>
-          <p class="member-bio">chhoti si bio likho yaha.</p>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-dribbble"></i></a>
-          </div>
-        </div>
-      </div>
 
-      <div class="team-card">
-        <div class="team-card-inner">
-          <div class="card-glare"></div>
-          <div class="cyber-lines"><span></span><span></span></div>
-          <div class="card-particles">
-            <span></span><span></span><span></span><span></span><span></span
-            ><span></span>
-          </div>
-          <div class="corner-elements">
-            <span></span><span></span><span></span><span></span>
-          </div>
-          <div class="avatar-wrapper">
+          <div class="member-card">
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
             <img
               src="https://dummyimage.com/300"
-              alt="Olivia Rhye"
-              class="avatar"
+              alt="Member"
+              class="profile-photo"
             />
+            <h3 class="member-name">Member Name</h3>
+            <p class="member-position">role likho</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
           </div>
-          <h3 class="member-name">User ka name</h3>
-          <p class="member-role">Role likho yaha</p>
-          <p class="member-bio">chhoti si bio likho yaha.</p>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-dribbble"></i></a>
-          </div>
-        </div>
-      </div>
 
-      <div class="team-card">
-        <div class="team-card-inner">
-          <div class="card-glare"></div>
-          <div class="cyber-lines"><span></span><span></span></div>
-          <div class="card-particles">
-            <span></span><span></span><span></span><span></span><span></span
-            ><span></span>
-          </div>
-          <div class="corner-elements">
-            <span></span><span></span><span></span><span></span>
-          </div>
-          <div class="avatar-wrapper">
+          <div class="member-card">
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
             <img
               src="https://dummyimage.com/300"
-              alt="Olivia Rhye"
-              class="avatar"
+              alt="Member"
+              class="profile-photo"
             />
-          </div>
-          <h3 class="member-name">User ka name</h3>
-          <p class="member-role">Role likho yaha</p>
-          <p class="member-bio">chhoti si bio likho yaha.</p>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-dribbble"></i></a>
+            <h3 class="member-name">Member Name</h3>
+            <p class="member-position">role likho</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div class="team-card">
-        <div class="team-card-inner">
-          <div class="card-glare"></div>
-          <div class="cyber-lines"><span></span><span></span></div>
-          <div class="card-particles">
-            <span></span><span></span><span></span><span></span><span></span
-            ><span></span>
-          </div>
-          <div class="corner-elements">
-            <span></span><span></span><span></span><span></span>
-          </div>
-          <div class="avatar-wrapper">
+      <!-- Research Team -->
+      <section class="team-section">
+        <h2 class="section-title">Research Team</h2>
+        <div class="team-grid">
+          <div class="member-card">
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
             <img
               src="https://dummyimage.com/300"
-              alt="Olivia Rhye"
-              class="avatar"
+              alt="Member"
+              class="profile-photo"
             />
+            <h3 class="member-name">Member Name</h3>
+            <p class="member-position">role likho</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-github"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fas fa-graduation-cap"></i></a>
+            </div>
           </div>
-          <h3 class="member-name">User ka name</h3>
-          <p class="member-role">Role likho yaha</p>
-          <p class="member-bio">chhoti si bio likho yaha.</p>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-dribbble"></i></a>
-          </div>
-        </div>
-      </div>
 
-      <div class="team-card">
-        <div class="team-card-inner">
-          <div class="card-glare"></div>
-          <div class="cyber-lines"><span></span><span></span></div>
-          <div class="card-particles">
-            <span></span><span></span><span></span><span></span><span></span
-            ><span></span>
-          </div>
-          <div class="corner-elements">
-            <span></span><span></span><span></span><span></span>
-          </div>
-          <div class="avatar-wrapper">
+          <div class="member-card">
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
             <img
               src="https://dummyimage.com/300"
-              alt="Olivia Rhye"
-              class="avatar"
+              alt="Member"
+              class="profile-photo"
             />
+            <h3 class="member-name">Member Name</h3>
+            <p class="member-position">role likho</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-github"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fas fa-graduation-cap"></i></a>
+            </div>
           </div>
-          <h3 class="member-name">User ka name</h3>
-          <p class="member-role">Role likho yaha</p>
-          <p class="member-bio">chhoti si bio likho yaha.</p>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-dribbble"></i></a>
-          </div>
-        </div>
-      </div>
 
-      <div class="team-card">
-        <div class="team-card-inner">
-          <div class="card-glare"></div>
-          <div class="cyber-lines"><span></span><span></span></div>
-          <div class="card-particles">
-            <span></span><span></span><span></span><span></span><span></span
-            ><span></span>
-          </div>
-          <div class="corner-elements">
-            <span></span><span></span><span></span><span></span>
-          </div>
-          <div class="avatar-wrapper">
+          <div class="member-card">
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
             <img
               src="https://dummyimage.com/300"
-              alt="Olivia Rhye"
-              class="avatar"
+              alt="Member"
+              class="profile-photo"
             />
+            <h3 class="member-name">Member Name</h3>
+            <p class="member-position">role likho</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-github"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fas fa-graduation-cap"></i></a>
+            </div>
           </div>
-          <h3 class="member-name">User ka name</h3>
-          <p class="member-role">Role likho yaha</p>
-          <p class="member-bio">chhoti si bio likho yaha.</p>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-dribbble"></i></a>
-          </div>
-        </div>
-      </div>
 
-      <div class="team-card">
-        <div class="team-card-inner">
-          <div class="card-glare"></div>
-          <div class="cyber-lines"><span></span><span></span></div>
-          <div class="card-particles">
-            <span></span><span></span><span></span><span></span><span></span
-            ><span></span>
-          </div>
-          <div class="corner-elements">
-            <span></span><span></span><span></span><span></span>
-          </div>
-          <div class="avatar-wrapper">
+          <div class="member-card">
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
             <img
               src="https://dummyimage.com/300"
-              alt="Olivia Rhye"
-              class="avatar"
+              alt="Member"
+              class="profile-photo"
             />
-          </div>
-          <h3 class="member-name">User ka name</h3>
-          <p class="member-role">Role likho yaha</p>
-          <p class="member-bio">chhoti si bio likho yaha.</p>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-dribbble"></i></a>
+            <h3 class="member-name">Member Name</h3>
+            <p class="member-position">role likho</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-github"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fas fa-graduation-cap"></i></a>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      <!-- Tech Team -->
+      <section class="team-section">
+        <h2 class="section-title">Tech Team</h2>
+        <div class="team-grid">
+          <div class="member-card">
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <img
+              src="https://dummyimage.com/300"
+              alt="Member"
+              class="profile-photo"
+            />
+            <h3 class="member-name">Member Name</h3>
+            <p class="member-position">role likho</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-github"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+
+          <div class="member-card">
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <img
+              src="https://dummyimage.com/300"
+              alt="Member"
+              class="profile-photo"
+            />
+            <h3 class="member-name">Member Name</h3>
+            <p class="member-position">role likhoo</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-github"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+
+          <div class="member-card">
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <img
+              src="https://dummyimage.com/300"
+              alt="Member"
+              class="profile-photo"
+            />
+            <h3 class="member-name">Member Name</h3>
+            <p class="member-position">role likho</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-github"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+
+          <div class="member-card">
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <img
+              src="https://dummyimage.com/300"
+              alt="Member"
+              class="profile-photo"
+            />
+            <h3 class="member-name">Member Name</h3>
+            <p class="member-position">role likho</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-github"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Design Team -->
+      <section class="team-section">
+        <h2 class="section-title">Design Team</h2>
+        <div class="team-grid">
+          <div class="member-card">
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <img
+              src="https://dummyimage.com/300"
+              alt="Member"
+              class="profile-photo"
+            />
+            <h3 class="member-name">Member Name</h3>
+            <p class="member-position">role likho</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-dribbble"></i></a>
+              <a href="#"><i class="fab fa-behance"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="member-card">
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <img
+              src="https://dummyimage.com/300"
+              alt="Member"
+              class="profile-photo"
+            />
+            <h3 class="member-name">Member Name</h3>
+            <p class="member-position">Role likho</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-dribbble"></i></a>
+              <a href="#"><i class="fab fa-behance"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="member-card">
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <img
+              src="https://dummyimage.com/300"
+              alt="Member"
+              class="profile-photo"
+            />
+            <h3 class="member-name">Member Name</h3>
+            <p class="member-position">Role likhoo</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-dribbble"></i></a>
+              <a href="#"><i class="fab fa-behance"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="member-card">
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <div class="particle-effect"></div>
+            <img
+              src="https://dummyimage.com/300"
+              alt="Member"
+              class="profile-photo"
+            />
+            <h3 class="member-name">Member Name</h3>
+            <p class="member-position">role likho</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-dribbble"></i></a>
+              <a href="#"><i class="fab fa-behance"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
-    <script>
-      VanillaTilt.init(document.querySelectorAll(".team-card-inner"), {
-        max: 15,
-        speed: 400,
-        glare: true,
-        "max-glare": 0.3,
-        scale: 1, // scale ko 1 rkha hai so that CSS can control scale
-        perspective: 800,
-        easing: "cubic-bezier(.03,.98,.52,.99)",
-        transition: true,
-      });
-    </script>
-    <script>
-      const cursor = document.querySelector(".cursor");
-      const canvas = document.getElementById("trail");
-      const ctx = canvas.getContext("2d");
-
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-
-      let mouse = { x: 0, y: 0 };
-      let particles = [];
-      let trailColor = { r: 0, g: 255, b: 170 }; // Aqua color
-      let isHoveringClickable = false;
-
-      // 🖱️ Mouse move listener
-      window.addEventListener("mousemove", (e) => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
-        cursor.style.left = mouse.x + "px";
-        cursor.style.top = mouse.y + "px";
-
-        // Trail particles
-        particles.push({
-          x: mouse.x,
-          y: mouse.y,
-          alpha: 1,
-          radius: 5 + Math.random() * 3,
-          color: `rgba(${trailColor.r}, ${trailColor.g}, ${trailColor.b}, `,
-        });
-      });
-
-      //  Detect hover on clickable elements
-      document.addEventListener("mouseover", (e) => {
-        const style = window.getComputedStyle(e.target);
-        if (style.cursor === "pointer") {
-          isHoveringClickable = true;
-          cursor.style.transform = "translate(-50%, -50%) scale(2.1)";
-          cursor.style.borderColor = "#ff0044";
-          trailColor = { r: 255, g: 0, b: 68 }; // Red trail
-        }
-      });
-
-      document.addEventListener("mouseout", (e) => {
-        const style = window.getComputedStyle(e.target);
-        if (style.cursor === "pointer") {
-          isHoveringClickable = false;
-          cursor.style.transform = "translate(-50%, -50%) scale(1)";
-          cursor.style.borderColor = "#00ffaa";
-          trailColor = { r: 0, g: 255, b: 170 }; // Aqua trail
-        }
-      });
-
-      // shrink/grow on mousedown/mouseup
-      document.addEventListener("mousedown", () => {
-        cursor.style.transform = isHoveringClickable
-          ? "translate(-50%, -50%) scale(1.5)"
-          : "translate(-50%, -50%) scale(0.8)";
-        cursor.style.backgroundColor = "rgba(255,255,255,0.2)";
-      });
-
-      document.addEventListener("mouseup", () => {
-        cursor.style.transform = isHoveringClickable
-          ? "translate(-50%, -50%) scale(1.8)"
-          : "translate(-50%, -50%) scale(1)";
-        cursor.style.backgroundColor = "transparent";
-      });
-
-      // Responsive resize
-      window.addEventListener("resize", () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      });
-
-      // Trail animation loop
-      function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach((p, i) => {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-          ctx.fillStyle = p.color + p.alpha + ")";
-          ctx.fill();
-
-          p.alpha -= 0.02;
-          p.radius *= 0.97;
-          if (p.alpha <= 0) particles.splice(i, 1);
-        });
-        requestAnimationFrame(animate);
-      }
-      animate();
-    </script>
   </body>
 </html>
