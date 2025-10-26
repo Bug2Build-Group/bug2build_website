@@ -27,11 +27,11 @@ document.addEventListener("DOMContentLoaded", () => {
   sidebar.className = "sidebar";
   sidebar.innerHTML = `
     <div class="close-btn">&times;</div>
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Events</a>
-    <a href="#">Teams</a>
-    <a href="#">Contact</a>
+    <a href="./index.html">Home</a>
+            <a href="./about_us.html">About</a>
+            <a href="./events.html">Events</a>
+            <a href="./our_teams.html">Team</a>
+            <a href="./index.html#contact">Contact</a>
   `;
   document.body.appendChild(sidebar);
 
