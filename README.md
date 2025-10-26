@@ -7,4 +7,6 @@ Bhoumic Garg
 Harshpreet Singh
 Aadarsh Chandra
 Sneha Bansal
+Mohit Thakur
+Saurabh Pal
 ```
