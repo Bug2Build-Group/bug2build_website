@@ -1,704 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Our Team - Bug2Build</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
 
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          Oxygen, Ubuntu, Cantarell, sans-serif;
-        background: #0d1117;
-        color: #e6edf3;
-        line-height: 1.6;
-        overflow-x: hidden;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Team - Bug2Build</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/teams_page.css">
+</head>
 
-      body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(ellipse at top, #1a2332 0%, #0d1117 50%);
-        z-index: -1;
-      }
-
-      .header {
-        text-align: center;
-        padding: 100px 20px 70px;
-      }
-
-      .header p {
-        font-size: 1.2rem;
-        color: #8b949e;
-        font-weight: 400;
-      }
-
-      .container {
-        max-width: 1280px;
-        margin: 0 auto;
-        padding: 0 24px 100px;
-      }
-
-      .team-section {
-        margin-bottom: 90px;
-      }
-
-      .section-title {
-        font-size: 2rem;
-        color: #f0f6fc;
-        margin-bottom: 50px;
-        text-align: center;
-        font-weight: 600;
-        position: relative;
-        padding-bottom: 35px;
-      }
-
-      /* tube light effect below section title */
-      .section-title::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 150px;
-        height: 4px;
-        background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
-        border-radius: 2px;
-        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5),
-          0 15px 40px rgba(118, 75, 162, 0.3),
-          0 20px 50px rgba(240, 147, 251, 0.2);
-      }
-
-      .team-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 28px;
-      }
-
-
-      .member-card {
-        background: rgba(22, 27, 34, 0.6);
-        border: 2px solid #30363d;
-        border-radius: 12px;
-        padding: 32px 24px;
-        text-align: center;
-        transition: transform 0.3s, box-shadow 0.5s;
-        position: relative;
-        backdrop-filter: blur(8px);
-      }
-
-      /* animated gradient border on hover */
-      .member-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: 12px;
-        padding: 2px;
-        background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe, #667eea);
-        background-size: 300% 300%;
-        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-
-      .member-card:hover::before {
-        opacity: 1;
-        animation: borderMove 3s linear infinite;
-      }
-
-      @keyframes borderMove {
-        0% {
-          background-position: 0% 50%;
-        }
-        100% {
-          background-position: 300% 50%;
-        }
-      }
-
-      .member-card:hover {
-        transform: translateY(-8px);
-        animation: showShadow 1.5s forwards;
-      }
-
-      @keyframes showShadow {
-        0% {
-          box-shadow: none;
-        }
-        100% {
-          box-shadow: 0 12px 40px rgba(102, 126, 234, 0.2),
-                      0 0 0 1px rgba(118, 75, 162, 0.1);
-        }
-      }
-
-      .profile-photo {
-        width: 130px;
-        height: 130px;
-        border-radius: 50%;
-        margin: 0 auto 22px;
-        border: 3px solid #30363d;
-        object-fit: cover;
-        transition: border-color 0.3s, transform 0.3s;
-      }
-
-      .member-card:hover .profile-photo {
-        border-color: #667eea;
-        transform: scale(1.05);
-      }
-
-      .member-name {
-        font-size: 1.25rem;
-        color: #f0f6fc;
-        font-weight: 600;
-        margin-bottom: 6px;
-      }
-
-      .member-position {
-        font-size: 0.95rem;
-        color: #7d8590;
-        margin-bottom: 20px;
-      }
-
-      .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        opacity: 0;
-        transform: translateY(10px);
-        transition: opacity 0.3s, transform 0.3s;
-      }
-
-      .member-card:hover .social-links {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .social-links a {
-        width: 36px;
-        height: 36px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        background: #21262d;
-        border: 1px solid #30363d;
-        border-radius: 6px;
-        color: #8b949e;
-        text-decoration: none;
-        transition: all 0.2s;
-      }
-
-      .social-links a:hover {
-        background: #667eea;
-        border-color: #667eea;
-        color: #fff;
-        transform: translateY(-3px);
-      }
-
-      /* looping particles on hover */
-      .particle-effect {
-        position: absolute;
-        width: 6px;
-        height: 6px;
-        /* background: #667eea; */
-        border-radius: 50%;
-        pointer-events: none;
-        opacity: 0;
-      }
-
-      .member-card:hover .particle-effect {
-        animation: particleLoop 2.5s ease-in-out infinite;
-      }
-
-      @keyframes particleLoop {
-        0% {
-          opacity: 0;
-          transform: translate(0, 0) scale(0);
-        }
-        15% {
-          opacity: 1;
-        }
-        85% {
-          opacity: 1;
-        }
-        100% {
-          opacity: 0;
-          transform: translate(var(--px), var(--py)) scale(1.5);
-        }
-      }
-
-      .particle-effect:nth-child(1) {
-        background-color: #4facfe;
-        top: 15%;
-        left: 20%;
-        --px: -25px;
-        --py: -35px;
-      }
-
-      .particle-effect:nth-child(2) {
-        background-color: #f093fb;
-        top: 25%;
-        right: 25%;
-        --px: 30px;
-        --py: -40px;
-        animation-delay: 0.8s;
-      }
-
-      .particle-effect:nth-child(3) {
-        background-color: #f5576c;
-        bottom: 30%;
-        left: 30%;
-        --px: -20px;
-        --py: 35px;
-        animation-delay: 1.6s;
-      }
-
-      @media (max-width: 1024px) {
-        .team-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 24px;
-        }
-
-        .main-title {
-          font-size: 5vw;
-        }
-
-        .section-title {
-          font-size: 1.75rem;
-        }
-      }
-
-      @media (max-width: 640px) {
-        .team-grid {
-          grid-template-columns: 1fr;
-          gap: 20px;
-        }
-
-        .header {
-          padding: 70px 20px 50px;
-        }
-
-        .main-title {
-          font-size: 8vw;
-        }
-
-        .header p {
-          font-size: 1rem;
-        }
-
-        .section-title {
-          font-size: 1.5rem;
-          margin-bottom: 35px;
-        }
-
-        .member-card {
-          padding: 28px 20px;
-        }
-
-        .profile-photo {
-          width: 110px;
-          height: 110px;
-        }
-
-        .member-name {
-          font-size: 1.1rem;
-        }
-      }
-
-      .main-title {
-        font-size: 4vw;
-        font-weight: 800;
-        margin-bottom: 20px;
-        background: linear-gradient(
-          135deg,
-          #667eea 0%,
-          #764ba2 25%,
-          #f093fb 50%,
-          #f5576c 75%,
-          #4facfe 100%
-        );
-        background-size: 300% 300%;
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        animation: colorShift 10s ease infinite;
-        position: relative;
-      }
-
-      @keyframes colorShift {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-
-      .title-underline {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100px;
-        height: 4px;
-        background: linear-gradient(90deg, #667eea, #764ba2);
-        box-shadow: 0px 0px 8px rgba(102, 126, 234, 0.3);
-        border-radius: 2px;
-        animation: glow 2s ease-in-out infinite;
-      }
-
-      @keyframes glow {
-        0%,
-        100% {
-          opacity: 1;
-          transform: translateX(-50%) scaleX(1);
-        }
-        50% {
-          opacity: 0.7;
-          transform: translateX(-50%) scaleX(1.2);
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header class="header">
-      <h1 class="main-title">
-        Our Team
-        <div class="title-underline"></div>
-      </h1>
-      <p>Meet the people building Bug2Build</p>
-    </header>
-
-    <div class="container">
-      <!-- Board Members -->
-      <section class="team-section">
-        <h2 class="section-title">Board Members</h2>
-        <div class="team-grid">
-          <div class="member-card">
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <img
-              src="images/teams/board/bhoumicgarg.jpg"
-              alt="Member"
-              class="profile-photo"
-            />
-            <h3 class="member-name">Bhomic Garg</h3>
-            <p class="member-position">Co-Founder, Research & Tech Head</p>
-            <div class="social-links">
-              <a href="https://www.linkedin.com/in/bhomicgarg/"><i class="fab fa-linkedin"></i></a>
-              <a href="GitHub.com/codebhomic"><i class="fas fa-github"></i></a>
-              <a href="Instagram.com/bhomicgarg"><i class="fas fa-instagram"></i></a>
-            </div>
-          </div>
-
-          <div class="member-card">
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <img
-              src="images/teams/board/KASTAB.jpg"
-              alt="Member"
-              class="profile-photo"
-            />
-            <h3 class="member-name">Kastab Garai</h3>
-            <p class="member-position">Founder & Community Head</p>
-            <div class="social-links">
-              <a href="https://LinkedIn.com/in/kastab"><i class="fab fa-linkedin"></i></a>
-            </div>
-          </div>
-
-          <div class="member-card">
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <img
-              src="images/teams/hr/Prince 2420806 Btech AI&DS.jpeg"
-              alt="Member"
-              class="profile-photo"
-            />
-            <h3 class="member-name">Prince Sagwal</h3>
-            <p class="member-position">Human Resource Head</p>
-            <div class="social-links">
-              <!-- <a href="#"><i class="fab fa-linkedin"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fas fa-envelope"></i></a> -->
-            </div>
-          </div>
-
-          <div class="member-card">
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <img
-              src="images/teams/board/Prince Hans.jpg"
-              alt="Member"
-              class="profile-photo"
-            />
-            <h3 class="member-name">Prince Hans</h3>
-            <p class="member-position">Secertary</p>
-            <div class="social-links">
-              <!-- <a href="#"><i class="fab fa-linkedin"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fas fa-envelope"></i></a> -->
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Tech Team -->
-      <section class="team-section">
-        <h2 class="section-title">Tech Team</h2>
-        <div class="team-grid">
-          <div class="member-card">
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <img
-              src="images/teams/tech/Harshpreet_pic.jpg"
-              alt="Member"
-              class="profile-photo"
-            />
-            <h3 class="member-name">Harshpreet Singh</h3>
-            <p class="member-position">Assistent Head</p>
-            <div class="social-links">
-              <a href="https://github.com/Harshpreet-Singh"><i class="fab fa-github"></i></a>
-              <a href="https://www.linkedin.com/in/harshpreet-singh-989419225 "><i class="fab fa-linkedin"></i></a>
-              <a href="https://www.instagram.com/harshpreet170607"><i class="fas fa-instagram"></i></a>
-            </div>
-          </div>
-
-          <div class="member-card">
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <img
-              src="images/teams/tech/sneha.jpg"
-              alt="Member"
-              class="profile-photo"
-            />
-            <h3 class="member-name">Sneha</h3>
-            <p class="member-position">Core Member</p>
-            <div class="social-links">
-              <a href="#" class="fab fa-linkedin"></i></a>
-              <a href="#"><i class="fab fa-github"></i></a>
-            </div>
-          </div>
-
-          <div class="member-card">
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <img
-              src="https://dummyimage.com/300"
-              alt="Member"
-              class="profile-photo"
-            />
-            <h3 class="member-name">Member Name</h3>
-            <p class="member-position">role likho</p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-github"></i></a>
-              <a href="#"><i class="fab fa-linkedin"></i></a>
-              <a href="#"><i class="fas fa-graduation-cap"></i></a>
-            </div>
-          </div>
-
-          <div class="member-card">
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <img
-              src="https://dummyimage.com/300"
-              alt="Member"
-              class="profile-photo"
-            />
-            <h3 class="member-name">Member Name</h3>
-            <p class="member-position">role likho</p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-github"></i></a>
-              <a href="#"><i class="fab fa-linkedin"></i></a>
-              <a href="#"><i class="fas fa-graduation-cap"></i></a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Research Team -->
-      <section class="team-section">
-        <h2 class="section-title">Research Team</h2>
-        <div class="team-grid">
-          <div class="member-card">
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <img
-              src="images/teams/research/Aadi  img.jpg"
-              alt="Member"
-              class="profile-photo"
-            />
-            <h3 class="member-name">Aadi</h3>
-            <p class="member-position">Core Member</p>
-            <div class="social-links">
-              <a href="https://github.com/Harshpreet-Singh"><i class="fab fa-github"></i></a>
-              <a href="https://https://www.linkedin.com/in/harshpreet-singh-989419225 "><i class="fab fa-linkedin"></i></a>
-              <a href="https://www.instagram.com/harshpreet170607"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-
-          <div class="member-card">
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <img
-              src="https://dummyimage.com/300"
-              alt="Member"
-              class="profile-photo"
-            />
-            <h3 class="member-name">Member Name</h3>
-            <p class="member-position">role likhoo</p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-github"></i></a>
-              <a href="#"><i class="fab fa-linkedin"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-            </div>
-          </div>
-
-          <div class="member-card">
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <img
-              src="https://dummyimage.com/300"
-              alt="Member"
-              class="profile-photo"
-            />
-            <h3 class="member-name">Member Name</h3>
-            <p class="member-position">role likho</p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-github"></i></a>
-              <a href="#"><i class="fab fa-linkedin"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-            </div>
-          </div>
-
-          <div class="member-card">
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <img
-              src="https://dummyimage.com/300"
-              alt="Member"
-              class="profile-photo"
-            />
-            <h3 class="member-name">Member Name</h3>
-            <p class="member-position">role likho</p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-github"></i></a>
-              <a href="#"><i class="fab fa-linkedin"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Design Team -->
-      <section class="team-section">
-        <h2 class="section-title">Design Team</h2>
-        <div class="team-grid">
-          <div class="member-card">
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <img
-              src="images/teams/marketing/Lavish_profile_pic.jpg"
-              alt="Member"
-              class="profile-photo"
-            />
-            <h3 class="member-name">Lavish</h3>
-            <p class="member-position">Core Member</p>
-            <div class="social-links">
-              <!-- <a href="#"><i class="fab fa-dribbble"></i></a>
-              <a href="#"><i class="fab fa-behance"></i></a>
-              <a href="#"><i class="fab fa-linkedin"></i></a> -->
-            </div>
-          </div>
-
-          <div class="member-card">
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <img
-              src="images/teams/marketing/Prachi.pic-20250918-WA0093.jpg"
-              alt="Member"
-              class="profile-photo"
-            />
-            <h3 class="member-name">Prachi</h3>
-            <p class="member-position">Core Member</p>
-            <div class="social-links">
-              <!-- <a href="#"><i class="fab fa-dribbble"></i></a>
-              <a href="#"><i class="fab fa-behance"></i></a>
-              <a href="#"><i class="fab fa-linkedin"></i></a> -->
-            </div>
-          </div>
-
-          <div class="member-card">
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <img
-              src="https://dummyimage.com/300"
-              alt="Member"
-              class="profile-photo"
-            />
-            <h3 class="member-name">Member Name</h3>
-            <p class="member-position">Role likhoo</p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-dribbble"></i></a>
-              <a href="#"><i class="fab fa-behance"></i></a>
-              <a href="#"><i class="fab fa-linkedin"></i></a>
-            </div>
-          </div>
-
-          <div class="member-card">
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <div class="particle-effect"></div>
-            <img
-              src="https://dummyimage.com/300"
-              alt="Member"
-              class="profile-photo"
-            />
-            <h3 class="member-name">Member Name</h3>
-            <p class="member-position">role likho</p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-dribbble"></i></a>
-              <a href="#"><i class="fab fa-behance"></i></a>
-              <a href="#"><i class="fab fa-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-      </section>
+<body>
+  <header class="header">
+    <a href="./" class="logo">Bug2Build</a>
+    <nav class="nav">
+            <a href="./index.html">Home</a>
+            <a href="./about_us.html">About</a>
+            <a href="./events.html">Events</a>
+            <a href="./our_teams.html">Team</a>
+            <a href="./index.html#contact">Contact</a>
+    </nav>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-  </body>
+  </header>
+  <section class="main-header">
+    <h1 class="main-title">
+      Our Team
+      <div class="title-underline"></div>
+    </h1>
+    <p>Meet the people building Bug2Build</p>
+  </section>
+
+  <div class="container">
+    <!-- Board Members -->
+    <section class="team-section">
+      <h2 class="section-title">Board Members</h2>
+      <div class="team-grid">
+        <div class="member-card">
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <img src="images/teams/board/bhoumicgarg.jpg" alt="Member" class="profile-photo" />
+          <h3 class="member-name">Bhomic Garg</h3>
+          <p class="member-position">Co-Founder, Research & Tech Head</p>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/bhomicgarg/"><i class="fab fa-linkedin"></i></a>
+            <a href="GitHub.com/codebhomic"><i class="fas fa-github"></i></a>
+            <a href="Instagram.com/bhomicgarg"><i class="fas fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <img src="images/teams/board/KASTAB.jpg" alt="Member" class="profile-photo" />
+          <h3 class="member-name">Kastab Garai</h3>
+          <p class="member-position">Founder & Community Head</p>
+          <div class="social-links">
+            <a href="https://LinkedIn.com/in/kastab"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <img src="images/teams/hr/Prince 2420806 Btech AI&DS.jpeg" alt="Member" class="profile-photo" />
+          <h3 class="member-name">Prince Sagwal</h3>
+          <p class="member-position">Human Resource Head</p>
+          <div class="social-links">
+            <!-- <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fas fa-envelope"></i></a> -->
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <img src="images/teams/board/Prince Hans.jpg" alt="Member" class="profile-photo" />
+          <h3 class="member-name">Prince Hans</h3>
+          <p class="member-position">Secertary</p>
+          <div class="social-links">
+            <!-- <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fas fa-envelope"></i></a> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Team -->
+    <section class="team-section">
+      <h2 class="section-title">Tech Team</h2>
+      <div class="team-grid">
+        <div class="member-card">
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <img src="images/teams/tech/Harshpreet_pic.jpg" alt="Member" class="profile-photo" />
+          <h3 class="member-name">Harshpreet Singh</h3>
+          <p class="member-position">Assistent Head</p>
+          <div class="social-links">
+            <a href="https://github.com/Harshpreet-Singh"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/harshpreet-singh-989419225 "><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/harshpreet170607"><i class="fas fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <img src="images/teams/tech/sneha.jpg" alt="Member" class="profile-photo" />
+          <h3 class="member-name">Sneha</h3>
+          <p class="member-position">Core Member</p>
+          <div class="social-links">
+            <a href="#" class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <img src="https://dummyimage.com/300" alt="Member" class="profile-photo" />
+          <h3 class="member-name">Member Name</h3>
+          <p class="member-position">role likho</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fas fa-graduation-cap"></i></a>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <img src="https://dummyimage.com/300" alt="Member" class="profile-photo" />
+          <h3 class="member-name">Member Name</h3>
+          <p class="member-position">role likho</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fas fa-graduation-cap"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research Team -->
+    <section class="team-section">
+      <h2 class="section-title">Research Team</h2>
+      <div class="team-grid">
+        <div class="member-card">
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <img src="images/teams/research/Aadi  img.jpg" alt="Member" class="profile-photo" />
+          <h3 class="member-name">Aadi</h3>
+          <p class="member-position">Core Member</p>
+          <div class="social-links">
+            <a href="https://github.com/Harshpreet-Singh"><i class="fab fa-github"></i></a>
+            <a href="https://https://www.linkedin.com/in/harshpreet-singh-989419225 "><i
+                class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/harshpreet170607"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <img src="https://dummyimage.com/300" alt="Member" class="profile-photo" />
+          <h3 class="member-name">Member Name</h3>
+          <p class="member-position">role likhoo</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <img src="https://dummyimage.com/300" alt="Member" class="profile-photo" />
+          <h3 class="member-name">Member Name</h3>
+          <p class="member-position">role likho</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <img src="https://dummyimage.com/300" alt="Member" class="profile-photo" />
+          <h3 class="member-name">Member Name</h3>
+          <p class="member-position">role likho</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Team -->
+    <section class="team-section">
+      <h2 class="section-title">Design Team</h2>
+      <div class="team-grid">
+        <div class="member-card">
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <img src="images/teams/marketing/Lavish_profile_pic.jpg" alt="Member" class="profile-photo" />
+          <h3 class="member-name">Lavish</h3>
+          <p class="member-position">Core Member</p>
+          <div class="social-links">
+            <!-- <a href="#"><i class="fab fa-dribbble"></i></a>
+              <a href="#"><i class="fab fa-behance"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a> -->
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <img src="images/teams/marketing/Prachi.pic-20250918-WA0093.jpg" alt="Member" class="profile-photo" />
+          <h3 class="member-name">Prachi</h3>
+          <p class="member-position">Core Member</p>
+          <div class="social-links">
+            <!-- <a href="#"><i class="fab fa-dribbble"></i></a>
+              <a href="#"><i class="fab fa-behance"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a> -->
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <img src="https://dummyimage.com/300" alt="Member" class="profile-photo" />
+          <h3 class="member-name">Member Name</h3>
+          <p class="member-position">Role likhoo</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-dribbble"></i></a>
+            <a href="#"><i class="fab fa-behance"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <div class="particle-effect"></div>
+          <img src="https://dummyimage.com/300" alt="Member" class="profile-photo" />
+          <h3 class="member-name">Member Name</h3>
+          <p class="member-position">role likho</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-dribbble"></i></a>
+            <a href="#"><i class="fab fa-behance"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+
 </html>
