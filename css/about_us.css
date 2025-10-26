@@ -159,12 +159,14 @@ body {
 /* Mission / Vision cards */
 .mission-vision {
   display: flex;
-  flex-wrap: wrap;
-  gap: 28px;
-  justify-content: center;
-  padding: 30px 20px;
-  max-width: 1000px;
-  margin: 20px auto;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: center;
+    padding: 30px 20px;
+    /* max-width: 1000px; */
+    margin: 20px auto;
+    justify-items: stretch;
+    align-content: stretch;
 }
 .card {
   flex: 0 1 380px;
