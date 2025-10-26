@@ -50,3 +50,49 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener("click", () => toggleSidebar(false));
   });
 });
+
+
+
+// number increasing animation
+
+document.addEventListener("DOMContentLoaded", () => {
+  const counters = document.querySelectorAll(".big-number");
+
+  const animateCounter = (counter) => {
+    const target = +counter.getAttribute("data-target");
+    const duration = 2000; 
+    const frameRate = 30;
+    const totalFrames = Math.round(duration / frameRate);
+    let frame = 0;
+
+    const countTo = () => {
+      frame++;
+      const progress = frame / totalFrames;
+      const current = Math.round(target * progress);
+      counter.innerText = current;
+      if (frame < totalFrames) {
+        setTimeout(countTo, frameRate);
+      } else {
+        counter.innerText = `${target}+`;
+      }
+    };
+    countTo();
+  };
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const counter = entry.target.querySelector(".big-number");
+          animateCounter(counter);
+          obs.unobserve(entry.target); // run once per box
+        }
+      });
+    },
+    { threshold: 0.6 } // trigger when 60% visible
+  );
+
+  document.querySelectorAll(".stat-box").forEach((box) => {
+    observer.observe(box);
+  });
+});

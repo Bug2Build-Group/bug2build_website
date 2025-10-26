@@ -4,13 +4,25 @@
   box-sizing: border-box;
 }
 
+
 body {
+  cursor: url('../cursor.png'), auto;
   margin: 0;
   font-family: "Segoe UI", sans-serif;
-  background: #121212;
+  background: radial-gradient(ellipse at top,
+      #1a1a2e 0%,
+      #16213e 25%,
+      #0f0f23 100%);
   color: #eee;
   box-sizing: border-box;
-  padding-top: 120px; 
+  padding-top: 120px;
+}
+
+
+button:hover,
+a:hover ,
+.join-btn:hover{
+  cursor: url('../pointer.png'), pointer; /* still your custom image */
 }
 
 /*Bounce animation */
@@ -18,9 +30,11 @@ body {
   0% {
     transform: translate(-50%, -2px);
   }
+
   50% {
     transform: translate(-50%, 0);
   }
+
   100% {
     transform: translate(-50%, -2px);
   }
@@ -45,7 +59,7 @@ body {
   transform: translate(-50%, 0);
   width: 90%;
   max-width: 1200px;
-  z-index: 1000; 
+  z-index: 1000;
   animation: bounce 1s infinite;
 }
 
@@ -70,9 +84,11 @@ body {
   justify-content: flex-end;
   scrollbar-width: none;
 }
+
 .nav::-webkit-scrollbar {
   display: none;
 }
+
 .nav a {
   position: relative;
   text-decoration: none;
@@ -80,6 +96,7 @@ body {
   font-size: 1.1rem;
   transition: color 0.3s ease;
 }
+
 .nav a:hover {
   color: #fff;
 }
@@ -92,6 +109,7 @@ body {
   justify-content: space-between;
   cursor: pointer;
 }
+
 .hamburger span {
   display: block;
   height: 3px;
@@ -115,9 +133,11 @@ body {
   box-shadow: -4px 0 15px rgba(0, 0, 0, 0.4);
   z-index: 2000;
 }
+
 .sidebar.open {
   transform: translateX(0);
 }
+
 .sidebar a {
   display: block;
   text-decoration: none;
@@ -126,6 +146,7 @@ body {
   font-size: 1.2rem;
   transition: color 0.3s;
 }
+
 .sidebar a:hover {
   color: #fff;
 }
@@ -140,6 +161,7 @@ body {
   cursor: pointer;
   transition: color 0.3s;
 }
+
 .close-btn:hover {
   color: #fff;
 }
@@ -155,8 +177,9 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
-  z-index: 1500; 
+  z-index: 1500;
 }
+
 .overlay.show {
   opacity: 1;
   pointer-events: all;
@@ -166,18 +189,22 @@ body {
   .nav {
     display: none;
   }
-  .logo{
+
+  .logo {
     margin-left: 15px;
   }
+
   .hamburger {
     display: flex;
     margin-right: 15px;
   }
+
   .header {
     width: 94%;
   }
 }
 
-body,html {
+body,
+html {
   overflow-x: hidden;
 }
