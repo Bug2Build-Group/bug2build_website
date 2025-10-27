@@ -1,4 +1,3 @@
-
 /* Footer and contact wala*/
 
 .contact-footer {
@@ -9,7 +8,7 @@
 .footer-container {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 40px;
   max-width: 1200px;
   margin: auto;
@@ -51,12 +50,13 @@
   transition: color 0.3s ease;
 }
 
-.footer-links li:hover a {  
+.footer-links li:hover a {
   color: #667eea;
 }
 
 /* Right column - contact form */
 .footer-right {
+  padding-left: 10rem;
   flex: 1.2;
   min-width: 280px;
 }
@@ -75,9 +75,9 @@
 /* Bottom strip */
 
 .footer-title {
-  font-size: 1.6rem;
+  font-size: 2.1rem;
   margin-bottom: 1rem;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .contact-form {
@@ -115,25 +115,31 @@
 
 .footer-social {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1.2rem;
   margin-top: 2rem;
 }
+
 .footer-social a {
   color: #fff;
   transition: all 0.2s ease;
   background: rgba(255, 255, 255, 0.1);
-  padding: 15px ;
+  padding: 15px;
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 0 5px rgba(255, 255, 255, 0.03);
 }
+
 .footer-social a:hover {
   color: #667eea !important;
   scale: 1.2;
 }
 
 .footer-rights {
+  /* height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; */
   background: #1b1b3b;
   text-align: center;
   margin-top: 20px;
@@ -146,12 +152,24 @@
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .footer-right {
+    padding-left: 0;
+  }
+}
+
+/* Responsive */
 @media (max-width: 900px) {
+  .footer-right {
+    padding-left: 0;
+  }
+
   .footer-container {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
+
   .footer-left,
   .footer-right {
     width: 100%;
