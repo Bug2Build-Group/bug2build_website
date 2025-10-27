@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Team - Bug2Build</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/contributor.css">
+    <link rel="stylesheet" href="css/footer.css">
+</head>
+
+<body>
+    <header class="header">
+        <a href="./" class="logo">Bug2Build</a>
+        <nav class="nav">
+            <a href="./index.html">Home</a>
+            <a href="./about_us.html">About</a>
+            <a href="./events.html">Events</a>
+            <a href="./our_teams.html">Team</a>
+            <a href="./contributors.html">Contributors</a>
+            <a href="./index.html#contact">Contact</a>
+        </nav>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+    <section class="main-header">
+        <h1 class="main-title">
+            Thanks for Your Contribution
+            <div class="title-underline"></div>
+        </h1>
+    </section>
+    <main class="container">
+        <!-- Contributors -->
+        <div class="member-card">
+            <span class="particle-effect"></span>
+            <span class="particle-effect"></span>
+            <span class="particle-effect"></span>
+
+            <div class="card-left">
+                <img id="image" src="images/teams/board/bhoumicgarg.jpg" class="profile-photo" />
+            </div>
+
+            <div class="card-right">
+                <div class="name-row">
+                    <h3 class="member-name" id="name">Bhoumic Garg</h3>
+                </div>
+
+                <p class="member-position">Tech Team Member</p>
+
+                <p class="contribution-date">Contribution From: <span id="date"></span></p>
+                <p class="contribution-details">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab voluptate deserunt quasi neque
+                    libero beatae aliquid quam adipisci dicta, asperiores veniam illum voluptatibus assumenda omnis
+                    nobis consectetur voluptas rem pariatur!
+                </p>
+
+                <!-- Download Button -->
+                <a href="certificate.pdf" class="certificate-btn" id="certificate-btn" download>
+                    Download Certificate
+                </a>
+
+                <!-- Verification Button -->
+                <a href="https://verify.bug2build.com/B2B-2024-001" id="verify-btn" class="verify-btn" target="_blank">
+                    Verify Certificate
+                </a>
+
+                <p class="certificate-date">
+                    Certificate Issued on: 08 - 01 - 2024
+                </p>
+            </div>
+        </div>
+        <!-- Contributors END -->
+    </main>
+
+    <!-- Footer Section  -->
+    <section class="contact-footer">
+        <div class="footer-container">
+            <!-- Left Side - Categories -->
+            <div class="footer-left" data-aos="fade-right" data-aos-delay="300">
+                <h2 class="footer-title">Where we are?</h2>
+
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3431.226599605278!2d76.59849284999999!3d30.683899899999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fe5b4792036c3%3A0x43dc4f9b168ff64a!2sMajatri%2C%20Punjab%20140307!5e0!3m2!1sen!2sin!4v1761561553444!5m2!1sen!2sin"
+                    width="500" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <!-- Right Side - Contact -->
+            <div class="footer-right" data-aos="fade-left" data-aos-delay="300">
+                <h2 class="footer-title">Contact Us</h2>
+                <p class="footer-desc">Have questions or want to collaborate? Reach out to us!</p>
+                <p class="footer-desc">Email: <a href="#" style="color: #006aff;">contact@bug2build.in</a></p>
+                <div class="footer-social">
+                    <a target="_blank" href="https://github.com/bug2build-group"><i class="fab fa-github fa-2x"></i></a>
+                    <a target="_blank" href="https://bit.ly/bug2build-group"><i
+                            class="fa-brands fa-whatsapp fa-2x"></i></a>
+                    <a target="_blank" href="https://www.linkedin.com/company/bug2builds/"><i
+                            class="fab fa-linkedin fa-2x"></i></a>
+                    <a target="_blank" href="https://www.instagram.com/_bug2build_/"><i
+                            class="fa-brands fa-instagram fa-2x"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <div class="footer-rights">
+        &copy; 2025 Bug2Build. All rights reserved.
+    </div>
+    <!-- Footer Section  -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const userId = params.get('id');
+        console.log(params,userId)
+        fetch('contributors.json')
+            .then(res => res.json())
+            .then(data => {
+                const contributor = data.find(item => item.uniqueId === userId);
+                if (!contributor) return alert("Contributor Not Found");
+
+                document.getElementById("name").innerHTML =
+                    `${contributor.name} <span class="uid">${contributor.uniqueId}</span>`;
+
+                document.getElementById("image").src = contributor.profileImage;
+                document.getElementById("date").innerText = contributor.date;
+                document.getElementById("certificate-btn").href = contributor.certificateUrl;
+                document.getElementById("verify-btn").href = contributor.verificationUrl;
+            });
+
+    </script>
+</body>
+
+</html>

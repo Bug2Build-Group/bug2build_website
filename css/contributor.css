@@ -1,0 +1,296 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at top, #1a2332 0%, #0d1117 50%);
+    z-index: -1;
+}
+
+.main-header {
+    text-align: center;
+    padding: 1.2rem 1rem;
+}
+
+.main-header p {
+    font-size: 1.2rem;
+    color: #8b949e;
+    font-weight: 400;
+}
+
+
+.main-title {
+    font-size: 4vw;
+    font-weight: 800;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg,
+            #667eea 0%,
+            #764ba2 25%,
+            #f093fb 50%,
+            #f5576c 75%,
+            #4facfe 100%);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: colorShift 10s ease infinite;
+    position: relative;
+}
+
+@keyframes colorShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.title-underline {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    box-shadow: 0px 0px 8px rgba(102, 126, 234, 0.3);
+    border-radius: 2px;
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) scaleX(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: translateX(-50%) scaleX(1.2);
+    }
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px 100px;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px 100px;
+}
+
+/* Modified layout for contributors card */
+.member-card {
+    background: rgba(22, 27, 34, 0.6);
+    border: 2px solid #30363d;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    transition: transform 0.3s, box-shadow 0.5s;
+    position: relative;
+    backdrop-filter: blur(8px);
+    flex-direction: row;
+}
+
+.member-card div {
+    display: block;
+}
+
+.card-left {
+    flex: 0 0 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-right {
+    flex: 1;
+    text-align: left;
+}
+
+.profile-photo {
+    width: 200px;
+    height: 200px;
+}
+
+.member-name {
+    font-size: 1.35rem;
+    margin-bottom: 4px;
+}
+
+.member-position {
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+}
+
+.contribution-date {
+    font-size: 0.85rem;
+    color: #8b949e;
+    margin-bottom: 8px;
+}
+
+.contribution-details {
+    font-size: 0.9rem;
+    color: #d0d7de;
+    line-height: 1.45;
+}
+
+/* Improved Unique ID alignment */
+.name-row {
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
+}
+
+.unique-id {
+    font-size: 0.75rem;
+    background: #21262d;
+    color: #a5b1c2;
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid #30363d;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+
+/* Verification Button Styling */
+.verify-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    background: #21262d;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #8b949e;
+    margin-top: 10px;
+    width: fit-content;
+    transition: all 0.3s ease;
+}
+
+.verify-btn:hover {
+    background: #4facfe;
+    border-color: #4facfe;
+    color: #fff;
+    transform: translateY(-4px);
+}
+
+/* Mobile adjustments */
+@media (max-width: 640px) {
+    .name-row {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .verify-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+/* Hover reveal animation for right side */
+.member-card .card-right * {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.member-card:hover .card-right .contribution-date,
+.member-card:hover .card-right .contribution-details {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Certificate Button */
+.certificate-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 16px;
+    background: #21262d;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #8b949e;
+    margin-top: 12px;
+    transition: all 0.3s ease;
+}
+
+.certificate-btn:hover {
+    background: #667eea;
+    border-color: #667eea;
+    color: #fff;
+    transform: translateY(-4px);
+}
+
+/* Certificate Issued Date */
+.certificate-date {
+    font-size: 0.85rem;
+    color: #a1a8b0;
+    margin-top: 6px;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+/* Mobile override */
+@media (max-width: 640px) {
+
+    .certificate-btn,
+    .certificate-date {
+        text-align: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Responsive for mobile */
+@media (max-width: 640px) {
+    .member-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 18px;
+    }
+
+    .card-left {
+        flex: unset;
+    }
+
+    .card-right {
+        text-align: center;
+    }
+}
