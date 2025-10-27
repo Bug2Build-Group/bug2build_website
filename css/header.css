@@ -185,6 +185,34 @@ a:hover ,
   pointer-events: all;
 }
 
+/* Sidebar fluid type openingg*/
+.sidebar {
+  transform: translateX(100%) scaleX(0.8) scaleY(1.2);
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.sidebar.open {
+  transform: translateX(0) scaleX(1) scaleY(1);
+}
+
+/* fade-in */
+.sidebar a {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.sidebar.open a {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.sidebar.open a:nth-child(2) { transition-delay: 0.1s; }
+.sidebar.open a:nth-child(3) { transition-delay: 0.2s; }
+.sidebar.open a:nth-child(4) { transition-delay: 0.3s; }
+.sidebar.open a:nth-child(5) { transition-delay: 0.4s; }
+.sidebar.open a:nth-child(6) { transition-delay: 0.5s; }
+
 @media (max-width: 768px) {
   .nav {
     display: none;
