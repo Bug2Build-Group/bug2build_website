@@ -1,27 +1,14 @@
-
-@keyframes colorShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 .about-wrapper {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 0 10px 20px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 0 10px 20px rgba(0, 0, 0, 0.2); */
   position: relative;
   min-height: 100vh;
   padding: 100px 5% 80px;
-  background: radial-gradient(
+  /* background: radial-gradient(
     ellipse at top,
     #1a1a2e 0%,
     #16213e 25%,
     #0f0f23 100%
-  );
+  ); */
 }
 
 .main-content {
@@ -58,6 +45,20 @@
   animation: colorShift 10s ease infinite;
   position: relative;
 }
+
+
+@keyframes colorShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 
 .title-underline {
   content: "";
@@ -111,7 +112,15 @@
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
   opacity: 0;
-  transform: translateY(50px);
+  /* transform: translateY(50px); */
+}
+
+.feature-card:hover {
+  transform: translateY(5px);
+  scale: 0.98;
+  /* transform: translateY(-12px) rotateX(5deg); */
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .card-overlay {
@@ -132,12 +141,6 @@
 
 .feature-card:hover .card-overlay {
   opacity: 1;
-}
-
-.feature-card:hover {
-  transform: translateY(-12px) rotateX(5deg);
-  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3),
-    0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .card-icon {
@@ -187,7 +190,6 @@
   gap: 30px;
   margin-top: 60px;
   padding: 40px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .stat-box {
@@ -256,17 +258,20 @@
   left: 100%;
 }
 
+
+
 /* Sponsors section */
 .sponsors-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   font-family: "Inter", "Segoe UI", Roboto, sans-serif;
-   background: radial-gradient(
+   /* background: radial-gradient(
     ellipse at top,
-    #1a1a2e 0%,      /* very dark blue */
-    #1f1f3a 25%,     /* slightly lighter */
-    #242446 50%,     /* medium dark blue */
-    #1b1b3b 75%,     /* darker bluish shade */
-    #0f0f23 100%     /* almost black */
-  );
+    #1a1a2e 0%,     
+    #1f1f3a 25%,    
+    #242446 50%,
+    #1b1b3b 75%,     
+    #0f0f23 100%    
+  ); */
   background-size: 400% 400%;
   animation: colorShift 10s ease infinite;
   color: #eee;
